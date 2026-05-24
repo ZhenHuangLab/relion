@@ -36,7 +36,7 @@ if(NOT FLTK_FOUND)
        
     message(STATUS "no previous fltk found, the following paths are set for libs/headers TO BE built")
     
-    set(FLTK_TAR_FILE ftp://ftp.mrc-lmb.cam.ac.uk/pub/scheres/fltk-1.3.5-source.tar.gz) # FLTK 1.3.5
+    set(FLTK_TAR_FILE https://www.fltk.org/pub/fltk/1.3.5/fltk-1.3.5-source.tar.gz) # FLTK 1.3.5
     set(FLTK_HASH e85017defd5a03ae82e634311db87bbf)
     set(FLTK_TAR_NAME fltk-1.3.5-source.tar.gz)
     
@@ -69,4 +69,3 @@ endif()
 
 message(STATUS "FLTK_INCLUDE_DIR: ${FLTK_INCLUDE_DIR}")
 message(STATUS "FLTK_LIBRARIES:   ${FLTK_LIBRARIES}")
-
