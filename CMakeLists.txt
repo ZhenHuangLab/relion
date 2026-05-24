@@ -146,6 +146,8 @@ endif()
 
 if(CUDA_FOUND)
     message(STATUS "Using cuda wrapper to compile....")
+    include_directories(BEFORE "${CMAKE_SOURCE_DIR}/src/acc/cuda")
+    add_definitions(-DTHRUST_IGNORE_CUB_VERSION_CHECK)
     if(EXISTS "${CUDA_TOOLKIT_ROOT_DIR}/include/nvtx3/nvToolsExt.h")
         include_directories("${CUDA_TOOLKIT_ROOT_DIR}/include/nvtx3")
         message(STATUS "Using CUDA NVTX v3 compatibility headers")
