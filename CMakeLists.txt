@@ -144,6 +144,10 @@ endif()
 
 if(CUDA_FOUND)
     message(STATUS "Using cuda wrapper to compile....")
+    if(EXISTS "${CUDA_TOOLKIT_ROOT_DIR}/include/nvtx3/nvToolsExt.h")
+        include_directories("${CUDA_TOOLKIT_ROOT_DIR}/include/nvtx3")
+        message(STATUS "Using CUDA NVTX v3 compatibility headers")
+    endif()
     if( (NOT ${CUDA_VERSION} VERSION_LESS "7.5") AND (NOT DoublePrec_ACC) )
         message(STATUS "Cuda version is >= 7.5 and single-precision build, enable double usage warning.")
 		set(WARN_DBL "--ptxas-options=-warn-double-usage") # cuda>=7.5
@@ -473,4 +477,3 @@ endif()
 #foreach (_variableName ${_variableNames})
 #    message(STATUS "${_variableName}=${${_variableName}}")
 #endforeach()
-
