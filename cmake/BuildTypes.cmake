@@ -1,10 +1,9 @@
 # Extra flags defined on each build type (this file is all optional to include)
 #
-# Because gcc is compliant with a float128 type, fftw has become as well. nvcc is NOT. 
-# So -D__INTEL_COMPILER just manages to avoid compiling float128-targets (see fftw3.h, for instance).
+# CUDA 13's libcu++ is confused by the old -D__INTEL_COMPILER workaround.
 # Add -G to allow cuda-gdb to break inside kernels.
 # CUDA 13's CCCL/CUB/Thrust headers require C++17 even for older RELION.
-set(EXTRA_NVCC_FLAGS "-D__INTEL_COMPILER --default-stream per-thread --std=c++17")
+set(EXTRA_NVCC_FLAGS "--default-stream per-thread --std=c++17")
 
 if(MDT_TYPE_CHECK)
    # Unfortunately -std=c++0x is not supported. -Xcompiler=-std=c++0x also does not work.
